@@ -6,7 +6,6 @@ $sql = "SELECT * FROM products WHERE featured=1";
 $featured = $con->query($sql);
 
 session_start();
-echo $_SESSION["username"];
 
 ?>
 
@@ -51,32 +50,32 @@ echo $_SESSION["username"];
 
     <section id="feature" class="section-p1">
         <div class="fe-box">
-            <img src="img/feature/f1.png" alt="">
+            <img src="img/feature/f1.jpg" alt="">
             <h6>Free Shipping</h6>
         </div>
 
         <div class="fe-box">
-            <img src="img/feature/f2.png" alt="">
+            <img src="img/feature/f2.jpg" alt="">
             <h6>Online Order</h6>
         </div>
 
         <div class="fe-box">
-            <img src="img/feature/f3.png" alt="">
+            <img src="img/feature/f3.jpg" alt="">
             <h6>Save Money</h6>
         </div>
 
         <div class="fe-box">
-            <img src="img/feature/f4.png" alt="">
+            <img src="img/feature/f4.jpg" alt="">
             <h6>Promotions</h6>
         </div>
 
         <div class="fe-box">
-            <img src="img/feature/f5.png" alt="">
+            <img src="img/feature/f5.jpg" alt="">
             <h6>Happy Sell</h6>
         </div>
 
         <div class="fe-box">
-            <img src="img/feature/f6.png" alt="">
+            <img src="img/feature/f6.jpg" alt="">
             <h6>24/7 Support</h6>
         </div>
     </section>
@@ -85,62 +84,9 @@ echo $_SESSION["username"];
         <div class="pro-container">
             <div class="des">
                 <h2 class="text-center">Featured Products</h2>
-                <?php
-                     while($product = mysqli_fetch_assoc($featured)):
-
-
-                ?>
-                <div class="pro">
-                    <h4> <?= $product['title'];?></h4>
-                    <img src="<?= $product['image'];?>" alt="<?= $product['title']; ?>"/>
-                    <p class="lprice">$ <?= $product['price'];?></p>
-                    <a href="details.php">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-1">More</button>
-                    </a>
-                </div>
-                <?php endwhile; ?>
+                
             </div>
         </div>
-        <div class="pro-container">
-            <div class="des">
-                <?php
-                     while($product = mysqli_fetch_assoc($featured)):
-
-
-                ?>
-                <div class="pro">
-                    <h4> <?= $product['title'];?></h4>
-                    <img src="<?= $product['image'];?>" alt="<?= $product['title']; ?>"/>
-                    <p class="lprice">$ <?= $product['price'];?></p>
-                    <a href="details-trikot.php">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-1">More</button>
-                    </a>
-                </div>
-                <?php endwhile; ?>
-            </div>
-        </div>
-
-        <div class="pro-container">
-            <div class="des">
-                <?php
-                     while($product = mysqli_fetch_assoc($featured)):
-
-
-                ?>
-                <div class="pro">
-                    <img src="<?= $product['image'];?>" alt="<?= $product['title']; ?>"/>
-                    <a href="details-trikot.php">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-1">More</button>
-                    </a>
-                </div>
-                <div>
-                    <h4> <?= $product['title'];?></h4>
-                    <p class="lprice">$ <?= $product['price'];?></p>
-                    <?php endwhile; ?>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>    
-            </div>
-        </div>   
 
             <div class="pro">
                 <img src="img/products/f2.jpg" alt="">
@@ -172,125 +118,6 @@ echo $_SESSION["username"];
         <div class="pro-container">
             <div class="pro">
                 <img src="img/products/n1.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="img/products/n2.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="img/products/n3.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="img/products/n4.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="img/products/n5.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="img/products/n6.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="img/products/n7.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-            
-            <div class="pro">
-                <img src="img/products/n8.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>

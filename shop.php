@@ -1,12 +1,25 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root');
-mysqli_select_db($con, 'webshop');
-$sql = "SELECT * FROM products WHERE featured=1";
-$featured = $con->query($sql);
+include("connection.php"); 
 
+$sql = "SELECT id, name, marke, preis, bild FROM produkte ORDER BY id DESC";
+$stmt = $con->prepare($sql);
+$produkte = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$host = 'localhost';
+$dbname = 'webshop';
+$user = 'root';
+$pass = '';
+
+try {
+
+    $con = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Verbindung fehlgeschlagen: " . $e->getMessage();
+    die();
+ }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +61,7 @@ $featured = $con->query($sql);
     
     <section id="product1" class="section-p1">
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='sproducts.html';">
+            <div class="pro" onclick="window.location.href='sproducts.php';">
                 <img src="img/products/f1.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
@@ -64,11 +77,15 @@ $featured = $con->query($sql);
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
             </div>
-            <div class="pro">
-                <img src="img/products/f2.jpg" alt="">
+        
+
+            <div id="product1" class="section-p1">
+            <?php foreach ($produkte as $produkt): ?>
+            <div class="pro" onclick="window.location.href='sproducts.php?id=<?php echo $produkt['id']; ?>';">
+                <img src="img/<?php echo htmlspecialchars($produkt['image']); ?>" alt="">
                 <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <span><?php echo htmlspecialchars($produkt['brandname']); ?></span>
+                    <h5><?php echo htmlspecialchars($produkt['title']); ?></h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -76,51 +93,13 @@ $featured = $con->query($sql);
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>$78</h4>
+                    <h4><?php echo number_format($produkt['price'], 2, ',', '.'); ?>$ </h4>
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
             </div>
-            <div class="pro-container">
-            <div class="des">
-                <h2 class="text-center">Featured Products</h2>
-                <?php
-                     while($product = mysqli_fetch_assoc($featured)):
+        <?php endforeach; ?>
+    </div>
 
-
-                ?>
-                <div class="pro">
-                    <h4> <?= $product['title'];?></h4>
-                    <img src="<?= $product['image'];?>" alt="<?= $product['title']; ?>"/>
-                    <p class="lprice">$ <?= $product['price'];?></p>
-                    <a href="details.php">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-1">More</button>
-                    </a>
-                </div>
-                <?php endwhile; ?>
-            </div>
-        </div>
-        </div>
-    </section>
-
-    <section id="pagination" class="section-p1">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#"><i class="fal fa-long"></i></a>
-    </section>
-
-    <section class="banner3">
-        <div class="banner-box">
-            <h2>SEASON SALE</h2>
-            <h3>Winter Collection -50% OFF</h3>
-        </div>
-        <div class="banner-box banner-box2">
-            <h2>NEW FOOTWEAR COLLECTION</h2>
-            <h3>Spring / Summer 2025</h3>
-        </div>
-        <div class="banner-box banner-box3">
-            <h2>T-SHIRTS</h2>
-            <h3>New Trendy Prints</h3>
-        </div>
     </section>
 
     <section id="newsletter" class="section-p1 section-m1">
